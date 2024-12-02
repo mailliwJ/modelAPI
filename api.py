@@ -27,9 +27,9 @@ def predict():
         return jsonify({'Error': 'Missing required parameter. Must provide a value for all parameters'})
     
     try:
-        pressure = request.args.get('pressure', None)
-        sunshine = request.args.get('sunshine', None)
-        mean_temp = request.args.get('mean_temp', None)
+        pressure = float(data['pressure'])
+        sunshine = float(data['sunshine'])
+        mean_temp = float(data['mean_temp'])
 
         input_data = np.array([[pressure, sunshine, mean_temp]])
         scaled_input = scaler.transform(input_data)
