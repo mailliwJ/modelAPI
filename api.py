@@ -67,11 +67,11 @@ def webhook():
     try:
         os.chdir(REPO_PATH)
     except FileNotFoundError:
-        return jsonify({'Message': F'The repo directory {REPO_PATH} does not exist'}), 404
+        return jsonify({'Message': f'The repo directory {REPO_PATH} does not exist'}), 404
 
     # Perform git pull
     try:
-        subprocess.run(['git', 'pull'], check=True)
+        subprocess.run(['git', 'pull', clone_url], check=True)
         subprocess.run(['touch', SERVER_PATH], check=True) # Reload PythonAnywhere WebServer
         return jsonify({'Message': f'Successfully pulled updates from the repository {repo_name}'}), 200
     
