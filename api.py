@@ -71,7 +71,7 @@ def webhook():
 
     # Perform git pull
     try:
-        subprocess.run(['git', 'pull', clone_url], check=True)
+        subprocess.run(['git', 'pull'], check=True)
         subprocess.run(['touch', SERVER_PATH], check=True) # Reload PythonAnywhere WebServer
         return jsonify({'Message': f'Successfully pulled updates from the repository {repo_name}'}), 200
     
